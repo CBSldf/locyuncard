@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>loc相册-admin</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/css/main.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<body>
+  <div class="main mdui-ripple">
+
+    <div class="mdui-appbar .mdui-appbar-scroll-hide mdui-appbar-fixed">
+      <div class="mdui-toolbar">
+        <a href="javascript:;" class="mdui-typo-title">loc云卡-admin</a>
+
+ 
+      </div>
+  
+    </div>
+    
+
+
+    
+
+  
+
+ 
+
+
+
+
+     
+ 
+    <div class="container">
+        <div class="row">
+
+               
+        </div>
+    </div>
+    <div class="mdui-divider"></div>
+    
+  </div>
+
+<script>
+  $.ajaxSetup({
+    async: false
+  });//全局同步
+  $.post("/",data={"p":"0"},function(result){
+    result = eval(result)
+    if(result!="555"){
+      var sjxs = "";
+      var sj = 0;
+      var id1 = 0;
+      for (var prop in result) {
+        if(sj==0){
+          a = result[prop]
+          $.post("/",data={"p":"1","im1":a["imid"]},function(result){ 
+            sjxs = '<div class="single-cat-item"><img src='+result+'><div class="item-meta"><p>'+a["name"]+'</p></div></div>'
+            document.getElementsByClassName("row")[0].innerHTML = document.getElementsByClassName("row")[0].innerHTML+sjxs
+            id1+=1
+
+          }) 
+  
+        
+        }
+      }
+
+    
+  }
+    
+  })
+
+  for(var i in document.getElementsByClassName("single-cat-item")){
+    document.getElementsByClassName("single-cat-item")[i].id=i
+    document.getElementsByClassName("single-cat-item")[i].onclick=function(){
+      id = this.id
+      mdui.prompt('请输入密码以便删除',
+        function (value) {
+          $.post("/rm",data={"mm":value,"id":id},function(result){ 
+            if(result=="211"){
+              mdui.snackbar("删除成功，请刷新页面！")
+            }else{
+              mdui.snackbar("出了点事故！可能是密码不对")
+            }
+          })
+        },
+        function (value) {
+          console.log("emm")
+        }   
+      )
+      document.getElementsByTagName("input")[0].type="password"
+    }
+  };
+
+  
+
+ 
+</script>
+
+</body>
+
+</html>
