@@ -1,38 +1,8 @@
 # locyk
+loc云卡，基于py，目前弃坑，版本0.1,用来代替shequ开源，可实现类似图床（但是显示的图片像卡片一样）的效果，本项目基于教学课件进行二次翻版，但是大部分都被我翻了，只有图片排版没翻，如有侵权联系我，立马删（）
 
-#### 介绍
-loc云卡，像图床一样，但是显示的图片像卡片一样
+# 部署方法
+建议py3.6.5,PY3.7,PY3.8.5，我使用的版本是3.7，请更改index.py里的路径(方法我懒得说，毕竟我自己实验了一下自己都不会改。。。。)，但是存储以及用户名都采用txt存储，而且未经加密，如真的要部署可以自行进行rsa非对称加密传输数据（我在网上找了好久都不成功），sha3加密等，并且设置禁止访问里面的users.txt，否则用户名泄露别怪我，并且最好https
 
-
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+# 使用方法
+如果部署成功，可以访问【域名：8000】就是主页，当然如果你想可视化删除图片的话可以访问【域名：8000/admin】,当然密码在index.py的rm路由那里，请自行改密码
